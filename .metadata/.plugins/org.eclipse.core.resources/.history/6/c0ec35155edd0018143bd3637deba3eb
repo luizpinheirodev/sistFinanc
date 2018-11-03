@@ -1,0 +1,19 @@
+package br.com.financeiro.domain;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class City extends GenericDomain {
+	
+	@Column(length = 50, nullable = false)
+	private String name;
+	
+	@ManyToOne
+	@JoinColumn(nullable = false)
+	private State state;
+
+
+}

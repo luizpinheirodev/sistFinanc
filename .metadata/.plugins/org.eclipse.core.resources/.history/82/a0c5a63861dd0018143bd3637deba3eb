@@ -1,0 +1,17 @@
+package br.com.financeiro.domain;
+
+@Entity
+public class Employee extends GenericDomain{
+	
+	@Column(length = 15, nullable = false)
+	private String numberCTPS;
+	
+	@Column(nullable = false)
+	@Temporal(TemporalType.DATE)
+	private Date admissionDate;
+	
+	@OneToOne
+	@JoinColumn(nullable = false)
+	private Person person;
+
+}

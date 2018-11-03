@@ -1,0 +1,23 @@
+package br.com.financeiro.domain;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass // Cria a classe informando que não pertence a tabela
+public class GenericDomain {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO) // Autoincremente
+	private Long cod;
+
+	public Long getCodigo() {
+		return cod;
+	}
+
+	public void setCodigo(Long cod) {
+		this.cod = cod;
+	}
+
+}

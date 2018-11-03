@@ -1,0 +1,36 @@
+package br.com.financeiro.dao;
+
+import java.util.List;
+
+import org.junit.Ignore;
+import org.junit.Test;
+
+import br.com.financeiro.domain.City;
+import br.com.financeiro.domain.State;
+
+public class ProductDAOTest {
+
+	@Test
+	@Ignore
+	public void salvar() throws ParseException {
+		
+		@Test
+		@Ignore
+		public void save(){
+			FornecedorDAO fornecedorDAO = new FornecedorDAO();
+			Fornecedor fornecedor = fornecedorDAO.buscar(new Long("3"));
+			
+			Produto produto = new Produto();
+			produto.setDescricao("Curso de Java");
+			produto.setFornecedor(fornecedor);
+			produto.setPreco(new BigDecimal("13.70"));
+			produto.setQuantidade(new Short("7"));
+			
+			ProdutoDAO produtoDAO = new ProdutoDAO();
+			produtoDAO.salvar(produto);
+			
+			System.out.println("Produto salvo com sucesso");
+		}
+	}
+
+}

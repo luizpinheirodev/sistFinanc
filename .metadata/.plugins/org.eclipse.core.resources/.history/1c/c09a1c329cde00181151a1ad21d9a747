@@ -1,0 +1,21 @@
+package br.com.financeiro.dao;
+
+import org.junit.Test;
+
+import br.com.financeiro.domain.State;
+
+public class StateDAOTest {
+	
+	@Test
+	public void save() {
+		State state = new State();
+		state.setName("São Paulo");
+		state.setInitials("SP");
+		
+		StateDAO stateDAO = new StateDAO();
+		stateDAO.save(state);
+	}
+	
+	
+
+}

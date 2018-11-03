@@ -1,0 +1,28 @@
+package br.com.financeiro.dao;
+
+import org.hibernate.Hibernate;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import br.com.financeiro.util.HibernateUtil;
+
+public class GenericDAO<Entity> {
+
+	public void save(Entity entity) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = null;
+
+		try {
+			transaction = session.beginTransaction();
+			session.save(entity);
+			transaction.commit();
+		} catch (RuntimeException e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			throw e;
+		} finally {
+			session.close();
+		}
+	}
+}

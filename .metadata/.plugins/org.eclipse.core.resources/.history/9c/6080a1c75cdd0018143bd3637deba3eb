@@ -1,0 +1,12 @@
+package br.com.financeiro.domain;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
+public class State {
+
+	@Column(length = 2, nullable = false)
+	private String initials;
+
+}

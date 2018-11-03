@@ -1,0 +1,52 @@
+package br.com.financeiro.dao;
+
+import java.util.List;
+
+import org.junit.Ignore;
+import org.junit.Test;
+
+import br.com.financeiro.domain.Provider;
+
+public class ProviderDAOTest {
+
+	@Test
+	//@Ignore
+	public void salvar() {
+		Provider provider = new Provider();
+		provider.setDescription("Fábio Vasconcelos");
+
+		ProviderDAO providerDAO = new ProviderDAO();
+		providerDAO.save(provider);
+	}
+
+	@Test
+	@Ignore
+	public void listar() {
+		ProviderDAO ProviderDAO = new ProviderDAO();
+		List<Provider> resultado = ProviderDAO.list();
+
+		System.out.println("Total de Registros Encontrados: " + resultado.size());
+
+		for (Provider provider : resultado) {
+			System.out.println(provider.getCodigo() + " - " + provider.getDescription());
+		}
+	}
+	
+	@Test
+	@Ignore
+	public void buscar(){
+		Long id = 3L;
+		
+		ProviderDAO providerDAO = new ProviderDAO();
+		Provider provider = providerDAO.find(id);
+		
+		if(provider == null){
+			System.out.println("Nenhum registro encontrado");
+		}else{
+			System.out.println("Registro encontrado:");
+			System.out.println(provider.getCodigo() + " - " + provider.getDescription());
+		}
+	}
+	
+
+}

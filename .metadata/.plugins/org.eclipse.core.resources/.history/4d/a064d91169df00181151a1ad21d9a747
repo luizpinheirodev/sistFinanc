@@ -1,0 +1,98 @@
+package br.com.financeiro.dao;
+
+import java.util.List;
+
+import org.junit.Ignore;
+import org.junit.Test;
+
+import br.com.financeiro.domain.State;
+
+public class CityDAOTest {
+
+	@Test
+	@Ignore
+	public void save() {
+		State state = new State();
+		state.setName("Rio de Janeiro");
+		state.setInitials("RS");
+
+		State state2 = new State();
+		state2.setName("Minas Gerais");
+		state2.setInitials("MG");
+
+		StateDAO stateDAO = new StateDAO();
+		stateDAO.save(state);
+		stateDAO.save(state2);
+	}
+
+	@Test
+	@Ignore
+	public void list() {
+		StateDAO stateDAO = new StateDAO();
+		List<State> result = stateDAO.list();
+
+		System.out.println("Total de Registros Encontrados: " + result.size());
+
+		for (State state : result) {
+			System.out.println(state.getCodigo() + " - " + state.getInitials() + " - " + state.getName());
+		}
+	}
+
+	@Test
+	@Ignore
+	public void find() {
+		Long id = 2L;
+		
+		StateDAO stateDAO = new StateDAO();
+		State state = stateDAO.find(id);
+		
+		if(state == null) {
+			System.out.println("Nenhum registro encontrado");
+		}else {
+			System.out.println("Registro encontrado: ");
+			System.out.println(state.getCodigo() + " - " + state.getInitials() + " - " + state.getName());
+		}
+	}
+	
+	@Test
+	@Ignore
+	public void delete() {
+		Long id = 2L;
+		
+		StateDAO stateDAO = new StateDAO();
+		State state = stateDAO.find(id);
+		
+		if(state == null) {
+			System.out.println("Nenhum registro encontrado");
+		}else {
+			stateDAO.delete(state);
+			System.out.println("Registro removido: ");
+			System.out.println(state.getCodigo() + " - " + state.getInitials() + " - " + state.getName());
+		}
+	}
+
+	@Test
+	@Ignore
+	public void update() {
+		Long id = 1L;
+		
+		StateDAO stateDAO = new StateDAO();
+		State state = stateDAO.find(id);
+		
+		if(state == null) {
+			System.out.println("Nenhum registro encontrado");
+		}else {
+			System.out.println("Registro editado - Antes: ");
+			System.out.println(state.getCodigo() + " - " + state.getInitials() + " - " + state.getName());
+			
+			state.setName("Santa Catarina");
+			state.setInitials("SC");
+			stateDAO.update(state);
+			
+			System.out.println("Registro editado - Depois: ");
+			System.out.println(state.getCodigo() + " - " + state.getInitials() + " - " + state.getName());			
+		}
+	}
+	
+
+}

@@ -1,0 +1,26 @@
+package br.com.financeiro.domain;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+public class Client {
+	
+	@Column(nullable = false)
+	@Temporal(TemporalType.DATE)
+	private Date dateRegister;
+	
+	@Column(nullable = false)
+	private Boolean active;
+	
+	@OneToOne
+	@JoinColumn(nullable = false)
+	private Person person;
+
+}

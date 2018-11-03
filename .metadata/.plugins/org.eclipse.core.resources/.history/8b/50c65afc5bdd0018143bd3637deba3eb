@@ -1,0 +1,15 @@
+package br.com.financeiro.domain;
+
+public class GenericDomain {
+
+	private Long cod;
+
+	public Long getCodigo() {
+		return cod;
+	}
+
+	public void setCodigo(Long cod) {
+		this.cod = cod;
+	}
+
+}

@@ -1,0 +1,24 @@
+package br.com.financeiro.domain;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+@Entity
+public class User  extends GenericDomain  {
+	
+	@Column(length = 32, nullable = false)
+	private String password;
+	
+	@Column(nullable = false)
+	private Character type;
+	
+	@Column(nullable = false)
+	private Boolean active;
+	
+	@OneToOne
+	@JoinColumn(nullable = false)
+	private Person person;
+
+}
