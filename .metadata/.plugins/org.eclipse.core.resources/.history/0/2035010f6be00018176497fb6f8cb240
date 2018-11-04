@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Estados</title>
+	
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+		<p:growl id="mensagem" />
+
+	<h:form>
+	
+	
+		<p:panel header="Lista dos Estados">
+			<p:dataTable emptyMessage="Nenhum registro encontrado." paginator="true"
+			value="#{stateBean.states}" var="state"
+			rows="6">
+				<f:facet name="header">
+					<p:commandButton value="Novo" oncomplete="PF('dialogo').show();"
+					actionListener="#{stateBean.newState()}" 
+					update="mensagem :formReg:pnReg"  />
+				</f:facet>
+				<p:column headerText="Nome" sortBy="#{state.name}" filterBy="#{state.name}">
+					<h:outputText value="#{state.name}" />
+				</p:column>
+				<p:column headerText="Sigla" sortBy="#{state.initials}" filterBy="#{state.initials}">
+					<h:outputText value="#{state.initials}" />
+				</p:column>
+				<p:column headerText="Opções">
+				
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+	
+	<p:dialog header="Estados - Cadastro" 
+	widgetVar="dialogo" draggable="false" resizable="false" modal="true" closable="false">
+		<h:form id="formReg">
+			<h:panelGrid columns="2" id="pnReg">
+				<p:outputLabel value="Nome:"></p:outputLabel>
+				<p:inputText maxlength="50" size ="30" value="#{stateBean.state.name}"></p:inputText>
+				
+				<p:outputLabel value="Sigla:"></p:outputLabel>
+				<p:inputText maxlength="2" size ="10" value="#{stateBean.state.initials}"></p:inputText>
+			</h:panelGrid>
+			
+			<h:panelGrid columns="2">
+				<p:commandButton value="Salvar" actionListener="#{stateBean.save()}" 
+				update="mensagem :formReg:pnReg" />
+				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();"></p:commandButton>
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+	
+</h:body>
+</html>

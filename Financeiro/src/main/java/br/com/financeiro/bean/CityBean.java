@@ -1,0 +1,84 @@
+package br.com.financeiro.bean;
+
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+import org.omnifaces.util.Messages;
+
+import br.com.financeiro.dao.CityDAO;
+import br.com.financeiro.dao.StateDAO;
+import br.com.financeiro.domain.City;
+import br.com.financeiro.domain.State;
+
+@ManagedBean
+@ViewScoped
+public class CityBean {
+
+	private City city;
+	private List<City> cities;
+	private List<State> states;
+
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
+	}
+
+	public List<City> getCities() {
+		return cities;
+	}
+
+	public void setCities(List<City> cities) {
+		this.cities = cities;
+	}
+
+	public List<State> getStates() {
+		return states;
+	}
+
+	public void setStates(List<State> states) {
+		this.states = states;
+	}
+
+	@PostConstruct
+	public void list() {
+		try {
+			CityDAO cityDAO = new CityDAO();
+			cities = cityDAO.list();
+		} catch (RuntimeException e) {
+			Messages.addGlobalError("Ocorreu um erro ao tentar listar as cidades.");
+			e.printStackTrace();
+		}
+	}
+	
+	public void newCity() {
+		try {
+			city = new City();
+			
+			StateDAO stateDAO = new StateDAO();
+			states = stateDAO.list();
+		} catch (RuntimeException e) {
+			Messages.addGlobalError("Ocorreu um erro ao gerar nova cidade.");
+			e.printStackTrace();
+		}
+	}
+	
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

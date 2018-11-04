@@ -1,5 +1,0 @@
-package br.com.financeiro.util;
-
-public class HibernateUtil {
-
-}

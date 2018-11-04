@@ -1,0 +1,51 @@
+package br.com.financeiro.bean;
+
+import java.io.Serializable;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+import org.omnifaces.util.Messages;
+
+import br.com.financeiro.dao.StateDAO;
+import br.com.financeiro.domain.State;
+
+@SuppressWarnings("serial")
+@ManagedBean
+@ViewScoped
+public class StateBean implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private State state;
+
+	public State getState() {
+		return state;
+	}
+
+	public void setState(State state) {
+		this.state = state;
+	}
+	
+	public void newState() {
+		state = new State();
+	}
+
+	public void save() {
+		try {
+			StateDAO stateDAO = new StateDAO();
+			stateDAO.save(state);
+			
+			newState();
+			
+			Messages.addGlobalInfo("Estado salvo com sucesso.");
+		} catch (RuntimeException e) {
+			Messages.addGlobalError("Ocorreu um erro ao tentar salvar o estado.");
+			e.printStackTrace();
+		}
+
+	}
+
+}

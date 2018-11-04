@@ -14,20 +14,49 @@
 <h:body>
 		<p:growl id="mensagem" />
 
-	<h:form>
+	<h:form id="formList">
 	
 	
 		<p:panel header="Lista dos Estados">
-			<p:dataTable emptyMessage="Nenhum registro encontrado." paginator="true">
+			<p:dataTable emptyMessage="Nenhum registro encontrado." paginator="true"
+			value="#{stateBean.states}" var="state"
+			rows="6" id="table">
 				<f:facet name="header">
 					<p:commandButton value="Novo" oncomplete="PF('dialogo').show();"
 					actionListener="#{stateBean.newState()}" 
 					update="mensagem :formReg:pnReg"  />
 				</f:facet>
-				<p:column headerText="Nome"></p:column>
-				<p:column headerText="Sigla"></p:column>
-				<p:column headerText="Opções"></p:column>
+				<p:column headerText="Nome" sortBy="#{state.name}" filterBy="#{state.name}">
+					<h:outputText value="#{state.name}" />
+				</p:column>
+				<p:column headerText="Sigla" sortBy="#{state.initials}" filterBy="#{state.initials}">
+					<h:outputText value="#{state.initials}" />
+				</p:column>
+				<p:column headerText="Opções">
+					
+					<p:commandButton icon="ui-icon-trash" 
+					actionListener="#{stateBean.delete}" update=":mensagem :formReg:pnReg :formList:table">
+						<p:confirm header="Confirmação" message="Deseja excluir o estado?"
+						icon="ui-icon-alert" />
+						<f:attribute name="stateSelected" value="#{state}" />
+					</p:commandButton>
+					
+					<p:commandButton icon="ui-icon-pencil" 
+					actionListener="#{stateBean.update}" update=":formReg:pnReg" oncomplete="PF('dialogo').show();">
+						<f:attribute name="stateSelected" value="#{state}" />
+					</p:commandButton>
+					
+				</p:column>
 			</p:dataTable>
+			
+			<p:confirmDialog global="true">
+				<p:commandButton value="Sim" type="button"
+				styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button"
+				styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+			
+			
 		</p:panel>
 	</h:form>
 	
@@ -44,7 +73,7 @@
 			
 			<h:panelGrid columns="2">
 				<p:commandButton value="Salvar" actionListener="#{stateBean.save()}" 
-				update="mensagem :formReg:pnReg" />
+				update="mensagem :formReg:pnReg :formList:table" oncomplete="PF('dialogo').hide();" />
 				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();"></p:commandButton>
 			</h:panelGrid>
 		</h:form>
