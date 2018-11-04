@@ -16,4 +16,7 @@
 <fullyQualifiedTypeName name="br.com.financeiro.domain.Provider"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="br.com.financeiro.domain.Client"/>
+<fullyQualifiedTypeName name="javax.faces.bean.ManagedBean"/>
+<fullyQualifiedTypeName name="org.omnifaces.util.Messages.Message"/>
+<fullyQualifiedTypeName name="org.omnifaces.util.Messages"/>
 </qualifiedTypeNameHistroy>

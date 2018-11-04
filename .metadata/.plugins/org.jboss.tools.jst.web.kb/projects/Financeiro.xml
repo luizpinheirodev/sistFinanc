@@ -53,15 +53,55 @@
   <path value="C:/Users/luiza/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
   <path value="C:/Users/luiza/.m2/repository/org/jboss/jandex/1.1.0.Final/jandex-1.1.0.Final.jar"/>
   <path value="C:/Users/luiza/.m2/repository/org/jboss/logging/jboss-logging/3.1.3.GA/jboss-logging-3.1.3.GA.jar"/>
+  <path value="C:/Users/luiza/.m2/repository/org/omnifaces/omnifaces/1.11/omnifaces-1.11.jar">
+   <libraries>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/lib-omnifaces-1.11.jar/meta-inf/faces-config.xml" project="Financeiro"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-omnifaces-1.11.jar/meta-inf/omnifaces-functions.taglib.xml" project="Financeiro"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-omnifaces-1.11.jar/meta-inf/omnifaces-ui.taglib.xml" project="Financeiro"/>
+    </library>
+   </libraries>
+  </path>
  </paths>
  <validation>
   <core validator-id="jsf-verification"/>
   <core validator-id="jboss.jsf.core"/>
-  <el/>
+  <el>
+   <linked-el length="33" name="%0" offset="852" path="%1"/>
+   <linked-el length="29" name="%0" offset="1569" path="%1"/>
+   <linked-el length="25" name="%0" offset="1421" path="%1"/>
+   <linked-el length="28" name="%0" offset="1720" path="%1"/>
+   <linked-el length="33" name="%2" offset="852" path="%1"/>
+   <linked-el length="29" name="%2" offset="1569" path="%1"/>
+   <linked-el length="25" name="%2" offset="1421" path="%1"/>
+   <linked-el length="28" name="%2" offset="1720" path="%1"/>
+   <linked-el length="29" name="%3" offset="1569" path="%1"/>
+   <linked-el length="25" name="%3" offset="1421" path="%1"/>
+  </el>
  </validation>
- <aliases/>
+ <aliases>
+  <alias path="stateBean" value="%0"/>
+  <alias
+   path="/Financeiro/src/main/java/br/com/financeiro/bean/StateBean.java" value="%2"/>
+  <alias path="/Financeiro/src/main/webapp/pages/state.xhtml" value="%1"/>
+  <alias
+   path="/Financeiro/src/main/java/br/com/financeiro/domain/State.java" value="%3"/>
+ </aliases>
  <includes/>
  <uris>
+  <uri value="http://xmlns.jcp.org/jsf/core">
+   <prefix>f</prefix>
+  </uri>
+  <uri value="http://xmlns.jcp.org/jsf/html">
+   <prefix>h</prefix>
+  </uri>
   <uri value="http://java.sun.com/jsf/core">
    <prefix>f</prefix>
   </uri>

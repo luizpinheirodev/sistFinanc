@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="StateDAOTest" project="Financeiro" tests="6" started="6" failures="0" errors="0" ignored="6">
+  <testsuite name="br.com.financeiro.dao.StateDAOTest" time="0.001">
+    <testcase name="delete" classname="br.com.financeiro.dao.StateDAOTest" time="0.001" ignored="true"/>
+    <testcase name="update" classname="br.com.financeiro.dao.StateDAOTest" time="0.0" ignored="true"/>
+    <testcase name="find" classname="br.com.financeiro.dao.StateDAOTest" time="0.0" ignored="true"/>
+    <testcase name="list" classname="br.com.financeiro.dao.StateDAOTest" time="0.0" ignored="true"/>
+    <testcase name="save" classname="br.com.financeiro.dao.StateDAOTest" time="0.0" ignored="true"/>
+    <testcase name="merge" classname="br.com.financeiro.dao.StateDAOTest" time="0.0" ignored="true"/>
+  </testsuite>
+</testrun>
